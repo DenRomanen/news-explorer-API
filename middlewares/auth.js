@@ -16,7 +16,6 @@ module.exports = (req, res, next) => {
       token,
       NODE_ENV === "production" ? JWT_SECRET : "dev-secret"
     );
-    // console.log(payload);
   } catch (e) {
     const err = new Error();
     err.statusCode = 401;

@@ -63,11 +63,11 @@ app.post(
 );
 
 app.use(auth);
+
 app.use("/", user);
 app.use("/articles", article);
-app.use("/:someRequest", (req, res, next) => {
+app.use("/:someRequest", (req, res) => {
   res.status(404).send({ message: "Запрашиваемый ресурс не найден" });
-  next();
 });
 
 app.use(errorLogger);
