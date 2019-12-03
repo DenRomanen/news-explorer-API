@@ -1,12 +1,12 @@
-const mongoose = require("mongoose");
-const validator = require("validator");
+const mongoose = require('mongoose');
+const validator = require('validator');
 
 const articleSchema = mongoose.Schema({
   keyword: {
     type: String,
     require: true,
     minlength: 2,
-    maxlength: 20
+    maxlength: 20,
   },
 
   title: { type: String, require: true, minlength: 2 },
@@ -23,9 +23,9 @@ const articleSchema = mongoose.Schema({
       validator(v) {
         return validator.isURL(v);
       },
-      message: props => `${props.value} Эта строка должна быть ссылкой!`
+      message: (props) => `${props.value} Эта строка должна быть ссылкой!`,
     },
-    required: true
+    required: true,
   },
 
   image: {
@@ -34,16 +34,16 @@ const articleSchema = mongoose.Schema({
       validator(v) {
         return validator.isURL(v);
       },
-      message: props => `${props.value} Эта строка должна быть ссылкой!`
+      message: (props) => `${props.value} Эта строка должна быть ссылкой!`,
     },
-    required: true
+    required: true,
   },
 
   owner: {
     require: true,
     type: mongoose.Schema.Types.ObjectId,
-    ref: "user"
-  }
+    ref: 'user',
+  },
 });
 
-module.exports = mongoose.model("article", articleSchema);
+module.exports = mongoose.model('article', articleSchema);

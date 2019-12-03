@@ -1,14 +1,14 @@
-const router = require("express").Router();
-const { celebrate, Joi } = require("celebrate");
+const router = require('express').Router();
+const { celebrate, Joi } = require('celebrate');
 
 const {
   postArticles,
   getArticles,
-  delArticles
-} = require("../controllers/articles");
+  delArticles,
+} = require('../controllers/articles');
 
 router.post(
-  "/",
+  '/',
   celebrate({
     body: Joi.object().keys({
       keyword: Joi.string()
@@ -24,26 +24,26 @@ router.post(
       link: Joi.string()
         .required()
         .regex(
-          /^(http:\/\/|https:\/\/)(((\d{1,3}\.){3}\d{1,3}([:]\d{2,5})?)\/?|(w{3}\.)?\w+(\.\w+)?([^www]\.[a-zA-Z]{2,5})(\/\w+)*(#)?\/?)/
+          /^(http:\/\/|https:\/\/)(((\d{1,3}\.){3}\d{1,3}([:]\d{2,5})?)\/?|(w{3}\.)?\w+(\.\w+)?([^www]\.[a-zA-Z]{2,5})(\/\w+)*(#)?\/?)/,
         ),
       image: Joi.string()
         .required()
         .regex(
-          /^(http:\/\/|https:\/\/)(((\d{1,3}\.){3}\d{1,3}([:]\d{2,5})?)\/?|(w{3}\.)?\w+(\.\w+)?([^www]\.[a-zA-Z]{2,5})(\/\w+)*(#)?\/?)/
-        )
-    })
+          /^(http:\/\/|https:\/\/)(((\d{1,3}\.){3}\d{1,3}([:]\d{2,5})?)\/?|(w{3}\.)?\w+(\.\w+)?([^www]\.[a-zA-Z]{2,5})(\/\w+)*(#)?\/?)/,
+        ),
+    }),
   }),
-  postArticles
+  postArticles,
 );
-router.get("/", getArticles);
+router.get('/', getArticles);
 router.delete(
-  "/:articleId",
+  '/:articleId',
   celebrate({
     body: Joi.object().keys({
-      cardId: Joi.string().length(24)
-    })
+      cardId: Joi.string().length(24),
+    }),
   }),
-  delArticles
+  delArticles,
 );
 
 module.exports = router;

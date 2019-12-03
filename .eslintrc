@@ -1,0 +1,33 @@
+{
+  "extends": "airbnb-base",
+  "rules": {
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": ["_id"]
+      }
+    ],
+    "linebreak-style": 0
+  }
+}
+
+/* module.exports = {
+  env: {
+    browser: true,
+    commonjs: true,
+    es6: true
+  },
+  globals: {
+    Atomics: "readonly",
+    SharedArrayBuffer: "readonly",
+    path: true
+  },
+  parserOptions: {
+    ecmaVersion: 2018
+  },
+
+  rules: { "no-underscore-dangle": "off" },
+  extends: ["airbnb-base"]
+}; */
+
+// extends: ["airbnb-base", "prettier"]
